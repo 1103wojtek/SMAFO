@@ -42,9 +42,11 @@ function showSmafoWindow(selectedText) {
 		$('.closing_div').remove();
 	});
   	
-  	
+/**************** header div *******************/
+	createHeaderDiv(selectedText);
+
 /**************** definition div *******************/
-	createDefinitionDiv(selectedText);
+	createDefinitionDiv();
   	
 /***************** content div *********************/
 	smafoContentArea = document.createElement('div');
@@ -52,7 +54,7 @@ function showSmafoWindow(selectedText) {
   	smafoContentArea.classList.add('content_area');
   	$(".smafoContainer").append(smafoContentArea);
   	
-  	createContentItems();
+  	//createContentItems();
   	$('.content_area').mCustomScrollbar({
         theme:"dark-thin"
       });
@@ -62,14 +64,31 @@ function showSmafoWindow(selectedText) {
     createAdvertismentDiv();
 }
 
-function createDefinitionDiv (selectedText) {
+function createHeaderDiv(selectedText){
+	headerDiv = document.createElement('div');
+  	headerDiv.classList.add('smafoTopDiv');
+  	headerDiv.classList.add('header_div');
+  	
+  	searchTerm = document.createElement('input');
+  	searchTerm.classList.add('classSearchTerm');
+  	searchTerm.setAttribute('type','text');
+  	searchTerm.setAttribute('value',selectedText);
+  	//$('.classSearchTerm').attr('type','text');
+  	//$('.classSearchTerm').attr('value','bla');
+  	
+  	
+  	headerDiv.appendChild(searchTerm);
+  	$(".smafoContainer").append(headerDiv);
+}
+
+function createDefinitionDiv () {
 	definitionArea = document.createElement('div');
   	definitionArea.classList.add('smafoTopDiv');
   	definitionArea.classList.add('definition_area');
   	title = document.createElement('p');
   	title.classList.add('smafoP');
   	
-  	definitionAreaText = "<span class='defAreaSpan'><b>Definition</b></span>: "+selectedText;
+  	definitionAreaText = "<span class='defAreaSpan'><b>Definition</b></span>: ";
   	title.innerHTML = definitionAreaText;
   	
   	para1 = document.createElement('p');
